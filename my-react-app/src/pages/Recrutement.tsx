@@ -83,30 +83,30 @@ export default function Recrutement() {
         <form className="form-card contact-form" onSubmit={handleSubmit} encType="multipart/form-data">
           {error && <div style={{ color: '#f55', marginBottom: '0.75rem' }}>{error}</div>}
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem' }}>
-            <label>
-              Prénom*<br />
+          <div className="form-row">
+            <label className="form-group">
+              Prénom*
               <input value={firstName} onChange={(e) => setFirstName(e.target.value)} />
             </label>
-            <label>
-              Nom*<br />
+            <label className="form-group">
+              Nom*
               <input value={lastName} onChange={(e) => setLastName(e.target.value)} />
             </label>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem', marginTop: '0.75rem' }}>
-            <label>
-              Numéro de téléphone*<br />
+          <div className="form-row" style={{ marginTop: '0.5rem' }}>
+            <label className="form-group">
+              Numéro de téléphone*
               <input value={phone} onChange={(e) => setPhone(e.target.value)} />
             </label>
-            <label>
-              Adresse E-mail*<br />
+            <label className="form-group">
+              Adresse E-mail*
               <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
             </label>
           </div>
 
-          <label style={{ marginTop: '0.75rem' }}>
-            Poste souhaité<br />
+          <label className="form-group" style={{ marginTop: '0.75rem' }}>
+            Poste souhaité
             <select value={position} onChange={(e) => setPosition(e.target.value)}>
               <option>Agent(e) Immobilier</option>
               <option>Assistant(e) Administratif(ve)</option>
@@ -114,14 +114,14 @@ export default function Recrutement() {
             </select>
           </label>
 
-          <label style={{ marginTop: '0.75rem' }}>
-            Joindre un CV<br />
+          <label className="form-group" style={{ marginTop: '0.75rem' }}>
+            Joindre un CV
             <input type="file" accept="application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" onChange={handleFile} />
             {cvFile && <div style={{ marginTop: '0.5rem' }}>{cvFile.name}</div>}
           </label>
 
-          <label style={{ marginTop: '0.75rem' }}>
-            Message<br />
+          <label className="form-group" style={{ marginTop: '0.75rem' }}>
+            Message
             <textarea rows={6} value={message} onChange={(e) => setMessage(e.target.value)} />
           </label>
 
