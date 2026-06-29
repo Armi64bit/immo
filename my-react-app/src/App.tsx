@@ -24,7 +24,7 @@ function App() {
       case 'location':
         return <Listing title="Biens à louer" subtitle="Des locations élégantes pour un quotidien premium." properties={locationProperties} />
       case 'carte':
-        return <MapPage zones={zones} />
+        return <MapPage properties={[...venteProperties, ...locationProperties]} zones={zones} />
       case 'estimation':
         return <Estimation />
       case 'contact':
