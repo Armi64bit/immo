@@ -92,7 +92,7 @@ export default function PropertyDetail() {
         <aside className="detail-sidebar">
           <div className="sidebar-card">
             <div className="detail-specs">
-              <div className="spec-item">
+              <div className="spec-item" >
                 <span className="spec-label">Surface</span>
                 <span className="spec-value">{(() => {
                   const match = property.details.match(/(\d+)\s*m²/)
