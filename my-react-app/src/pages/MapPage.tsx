@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import type { PropertyItem } from '../types'
 
 type Props = {
@@ -7,6 +8,7 @@ type Props = {
 
 export default function MapPage({ properties }: Props) {
   const [selectedProperty, setSelectedProperty] = useState<PropertyItem | null>(null)
+  const navigate = useNavigate()
 
   const getMapEmbedUrl = () => {
     if (selectedProperty && selectedProperty.lat && selectedProperty.lng) {
@@ -47,7 +49,17 @@ export default function MapPage({ properties }: Props) {
           />
           {selectedProperty && (
             <>
-              <div className="map-selected-card">
+              <div
+                className="map-selected-card"
+                role="button"
+                tabIndex={0}
+                onClick={() => navigate(`/property/${selectedProperty.reference}`)}
+                onKeyDown={(event) => {
+                  if (event.key === 'Enter' || event.key === ' ') {
+                    navigate(`/property/${selectedProperty.reference}`)
+                  }
+                }}
+              >
                 <div>
                   <strong>{selectedProperty.title}</strong>
                   <p className="selected-location">{selectedProperty.location}</p>

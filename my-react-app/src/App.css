@@ -1165,6 +1165,11 @@ a {
   align-items: center;
   gap: 1rem;
   max-width: 400px;
+  cursor: pointer;
+}
+
+.map-selected-card:hover {
+  transform: translateY(-1px);
 }
 
 .map-selected-card strong {
