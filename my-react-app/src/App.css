@@ -781,6 +781,18 @@ a {
   cursor: pointer;
 }
 
+.mobile-toolbox {
+  display: none;
+}
+
+.mobile-header-actions {
+  display: none;
+}
+
+.mobile-home-actions {
+  display: none;
+}
+
 .menu-toggle span {
   display: block;
   width: 18px;
@@ -795,7 +807,7 @@ a {
 
 @media (max-width: 960px) {
   .topbar {
-    grid-template-columns: auto 1fr auto;
+    grid-template-columns: auto 1fr;
     align-items: center;
   }
 
@@ -808,10 +820,29 @@ a {
     justify-self: start;
   }
 
+  .mobile-toolbox {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+  }
+
+  .mobile-header-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.7rem;
+    justify-content: flex-start;
+    margin-bottom: 0.4rem;
+  }
+
+  .mobile-home-actions {
+    display: flex;
+    gap: 0.7rem;
+    margin: 0 0 1rem;
+    padding: 0 0.2rem;
+  }
+
   .menu-toggle {
     display: inline-flex;
-    justify-self: end;
-    margin-left: auto;
   }
 
   .mobile-nav-panel {

@@ -18,6 +18,9 @@ export default function Home({ featuredProperties, zones, onNavigate }: Props) {
               <h1>L'immobilier autrement.</h1>
               <p className="hero-intro">Une sélection rigoureuse de biens à la vente et à la location dans les plus beaux quartiers du Grand Tunis.</p>
               <div className="hero-actions">
+        <button type="button" className="header-cta" onClick={() => onNavigate('estimation')}>
+          Estimer mon bien
+        </button>
                 <button type="button" className="btn btn-primary" onClick={() => onNavigate('vente')}>Vente</button>
                 <button type="button" className="btn btn-secondary" onClick={() => onNavigate('location')}>Location</button>
               </div>
@@ -41,6 +44,8 @@ export default function Home({ featuredProperties, zones, onNavigate }: Props) {
           </div>
         </div>
       </section>
+
+    
 
       <section className="section-block">
         <div className="section-heading section-heading-space">

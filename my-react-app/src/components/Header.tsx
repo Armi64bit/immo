@@ -60,18 +60,20 @@ export default function Header({ navItems, onEstimateClick }: Props) {
           <span>Immo</span>Connect
         </Link>
 
-        <button
-          type="button"
-          className="menu-toggle"
-          aria-label="Ouvrir le menu"
-          aria-expanded={menuOpen}
-          aria-controls="mobile-nav-panel"
-          onClick={() => setMenuOpen((prev) => !prev)}
-        >
-          <span />
-          <span />
-          <span />
-        </button>
+        <div className="mobile-toolbox">
+          <button
+            type="button"
+            className="menu-toggle"
+            aria-label="Ouvrir le menu"
+            aria-expanded={menuOpen}
+            aria-controls="mobile-nav-panel"
+            onClick={() => setMenuOpen((prev) => !prev)}
+          >
+            <span />
+            <span />
+            <span />
+          </button>
+        </div>
 
         <nav className="nav-links desktop-nav" aria-label="Navigation principale">
           {navItems.map((item) => (
@@ -106,13 +108,6 @@ export default function Header({ navItems, onEstimateClick }: Props) {
             </Link>
           ))}
         </nav>
-
-        <div className="mobile-header-actions">
-          <button type="button" className="header-cta" onClick={handleEstimateClick}>
-            Estimer mon bien
-          </button>
-          <button type="button" className="locale-button">EN</button>
-        </div>
       </div>
     </header>
   )
