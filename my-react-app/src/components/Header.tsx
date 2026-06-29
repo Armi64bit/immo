@@ -38,6 +38,7 @@ export default function Header({ navItems, onEstimateClick }: Props) {
       location: '/Location',
       carte: '/Carte',
       estimation: '/Estimation',
+      recrutement: '/Recrutement',
       contact: '/Contact'
     }
     return routeMap[key] || '/'

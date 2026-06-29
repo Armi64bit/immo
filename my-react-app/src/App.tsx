@@ -8,6 +8,7 @@ import Listing from './pages/Listing'
 import MapPage from './pages/MapPage'
 import Estimation from './pages/Estimation'
 import Contact from './pages/Contact'
+import Recrutement from './pages/Recrutement'
 import PropertyDetail from './pages/PropertyDetail'
 import { navItems, featuredProperties, zones, whatsappNumbers } from './data/siteData'
 
@@ -43,6 +44,7 @@ function AppContent() {
           <Route path="/Location" element={<Listing title="Biens à louer" subtitle="Des locations élégantes pour un quotidien premium." properties={locationProperties} />} />
           <Route path="/Carte" element={<MapPage properties={[...venteProperties, ...locationProperties]} />} />
           <Route path="/Estimation" element={<Estimation />} />
+          <Route path="/Recrutement" element={<Recrutement />} />
           <Route path="/Contact" element={<Contact />} />
           <Route path="/property/:id" element={<PropertyDetail />} />
         </Routes>
