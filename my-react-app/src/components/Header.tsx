@@ -57,7 +57,11 @@ export default function Header({ navItems, onEstimateClick }: Props) {
     <header className="main-header">
       <div className="topbar">
         <Link to="/" className="brand" role="banner">
-          <span>Immo</span>Connect
+          <img
+            src="/logod.png"
+            alt="ImmoConnect logo"
+            className="brand-logo"
+          />
         </Link>
 
         <div className="mobile-toolbox">

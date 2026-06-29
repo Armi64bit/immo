@@ -52,29 +52,45 @@ a {
   backdrop-filter: blur(16px);
   background: rgba(8, 7, 6, 0.92);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  flex-direction: column;
+  padding-block: 0.4rem;
 }
 
 .topbar {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 1rem 1.5rem;
+  padding: 1rem 1.2rem;
   display: grid;
-  grid-template-columns: minmax(180px, auto) 1fr minmax(180px, auto);
+  grid-template-columns: minmax(140px, auto) 1fr minmax(140px, auto);
   align-items: center;
   gap: 1rem;
+  min-height: 3.5rem;
 }
 
 .brand {
-  font-family: 'Playfair Display', Georgia, serif;
-  font-size: 1.5rem;
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
   color: var(--text);
+  min-width: 0;
+  width: 100%;
 }
 
-.brand span {
-  color: var(--accent);
+.brand-logo {
+  width: 100%;
+  max-width: 20rem;
+  max-height: 4rem;
+  display: block;
+  object-fit: contain;
+}
+
+@media (max-width: 960px) {
+  .brand-logo {
+    width: 100%;
+    max-width: calc(100vw - 5.5rem);
+    max-height: 3rem;
+  }
 }
 
 .nav-links {
@@ -169,10 +185,11 @@ a {
 
 .hero-grid {
   display: grid;
-  grid-template-columns: 1fr 0.95fr;
-  gap: 1.25rem;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 4.25rem;
   width: 100%;
   align-items: center;
+  position: relative;
 }
 
 /* Constrain and center hero content to match main layout spacing */
@@ -228,7 +245,9 @@ a {
 .hero-summary {
   display: grid;
   gap: 1.3rem;
-  align-self: center;
+  align-self: start;
+  position: sticky;
+  top: 8.5rem;
 }
 
 .hero-card {
@@ -807,8 +826,15 @@ a {
 
 @media (max-width: 960px) {
   .topbar {
-    grid-template-columns: auto 1fr;
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    grid-template-columns: auto auto;
+    justify-content: space-between;
     align-items: center;
+    padding: 0.75rem 1rem;
+    gap: 0.8rem;
+    height: 3rem;
   }
 
   .desktop-nav,
@@ -818,12 +844,25 @@ a {
 
   .brand {
     justify-self: start;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    font-size: 1.1rem;
   }
 
   .mobile-toolbox {
     display: flex;
     align-items: center;
-    margin-left: auto;
+    justify-content: center;
+    margin-left: 0;
+    justify-self: end;
+    height: 100%;
+  }
+
+  .menu-toggle {
+    display: inline-flex;
+    width: 40px;
+    height: 40px;
   }
 
   .mobile-header-actions {
@@ -841,10 +880,6 @@ a {
     padding: 0 0.2rem;
   }
 
-  .menu-toggle {
-    display: inline-flex;
-  }
-
   .mobile-nav-panel {
     display: flex;
     flex-direction: column;
@@ -858,7 +893,8 @@ a {
   }
 
   .mobile-nav-panel.open {
-    max-height: 320px;
+    max-height: 100vh;
+    overflow-y: auto;
     opacity: 1;
     pointer-events: auto;
     padding: 0.5rem 1rem 1rem;
@@ -894,10 +930,16 @@ a {
   .hero-grid {
     grid-template-columns: 1fr;
     padding: 0 1rem;
+    position: static;
   }
 
   .hero-summary {
     gap: 1rem;
+    position: static;
+    right: auto;
+    top: auto;
+    transform: none;
+    width: 100%;
   }
 
   .hero-card {
@@ -1716,7 +1758,12 @@ a {
   }
 
   .topbar {
-    grid-template-columns: 1fr;
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    grid-template-columns: auto auto;
+    justify-content: space-between;
+    align-items: center;
     gap: 0.75rem;
   }
 
