@@ -170,6 +170,13 @@ textarea {
   align-items: center;
 }
 
+/* Constrain and center hero content to match main layout spacing */
+.hero-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
 .hero-copy {
   display: flex;
   flex-direction: column;

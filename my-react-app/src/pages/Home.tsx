@@ -15,30 +15,23 @@ export default function Home({ featuredProperties, zones, onNavigate }: Props) {
             <div className="hero-copy">
               <p className="hero-eyebrow">Agence immobilière · Grand Tunis</p>
               <h1>L'immobilier autrement.</h1>
-              <p className="hero-intro">
-                Une sélection rigoureuse de biens à la vente et à la location dans
-                les plus beaux quartiers du Grand Tunis.
-              </p>
+              <p className="hero-intro">Une sélection rigoureuse de biens à la vente et à la location dans les plus beaux quartiers du Grand Tunis.</p>
               <div className="hero-actions">
-                <button type="button" className="btn btn-primary" onClick={() => onNavigate('vente')}>
-                  Vente
-                </button>
-                <button type="button" className="btn btn-secondary" onClick={() => onNavigate('location')}>
-                  Location
-                </button>
+                <button type="button" className="btn btn-primary" onClick={() => onNavigate('vente')}>Vente</button>
+                <button type="button" className="btn btn-secondary" onClick={() => onNavigate('location')}>Location</button>
               </div>
             </div>
-            <div className="hero-summary">
-              <div className="hero-card">
+            <div style={{ marginLeft: '25rem' }} className="hero-summary">
+              <div className="hero-card" style={{ width: '120%' }}>
                 <strong>Élégance & performance</strong>
                 <p>Un accompagnement haut de gamme, des présentations soignées, des transactions optimisées.</p>
               </div>
               <div className="hero-stats">
-                <div>
+                <div style={{ width: '130%',marginRight: '1rem' }}>
                   <span>120+</span>
                   <p>Biens premium</p>
                 </div>
-                <div>
+                <div style={{ width: '120%',marginLeft: '1rem' }}>
                   <span>24h</span>
                   <p>Réponse garantie</p>
                 </div>
