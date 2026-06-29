@@ -12,8 +12,8 @@ export default function MapPage({ properties, zones }: Props) {
   const getMapEmbedUrl = () => {
     if (selectedProperty && selectedProperty.lat && selectedProperty.lng) {
       const { lat, lng } = selectedProperty
-      // Center map on property with red marker
-      return `https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3261.827597858!2d${lng}!3d${lat}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2z${lat}%2C${lng}!5e0!3m2!1sen!2stn!4v1640000000000&q=${lat},${lng}`
+      // Google Maps embed with marker at property location
+      return `https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2613.463195717!2d${lng}!3d${lat}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2z${lat}%2C${lng}!5e0!3m2!1sen!2stn!4v1640000000000&markers=color:red%7C${lat},${lng}`
     }
     // Default view Tunis
     return `https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d105481.66928306253!2d10.146305!3d36.806389!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12e340c5c29f8d5d%3A0x263df8b88e42b689!2sTunis!5e0!3m2!1sen!2stn!4v1640000000000`
@@ -39,12 +39,6 @@ export default function MapPage({ properties, zones }: Props) {
             referrerPolicy="no-referrer-when-downgrade"
             title="Carte des biens"
           />
-          {selectedProperty && (
-            <div className="map-pin-marker">
-              <div className="pin-icon">📍</div>
-              <div className="pin-label">{selectedProperty.title}</div>
-            </div>
-          )}
           {selectedProperty && (
             <div className="map-selected-card">
               <div>
