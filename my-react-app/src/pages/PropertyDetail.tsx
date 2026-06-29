@@ -56,8 +56,27 @@ export default function PropertyDetail() {
         <div className="detail-ref-price">
           <span className="detail-ref">RÉFÉRENCE {property.reference}</span>
           <span className="detail-price">{property.price}</span>
-          <span className="detail-available">DISPONIBLE</span>
+          <span className="detail-available">{property.status?.toUpperCase()}</span>
         </div>
+
+        {/* <div className="icons-row">
+          <div className="icon-item">
+            <div className="icon">📐</div>
+            <div className="label">{property.area ? `${property.area} m²` : 'N/A'}</div>
+          </div>
+          <div className="icon-item">
+            <div className="icon">🏠</div>
+            <div className="label">{property.rooms ?? '—'} Pièces</div>
+          </div>
+          <div className="icon-item">
+            <div className="icon">🛏️</div>
+            <div className="label">{property.bedrooms ?? '—'} Chambres</div>
+          </div>
+          <div className="icon-item">
+            <div className="icon">🚿</div>
+            <div className="label">{property.bathrooms ?? '—'} Salles de bains</div>
+          </div>
+        </div> */}
       </header>
 
       <div className="detail-layout">
@@ -94,28 +113,31 @@ export default function PropertyDetail() {
             <div className="detail-specs">
               <div className="spec-item" >
                 <span className="spec-label">Surface</span>
-                <span className="spec-value">{(() => {
-                  const match = property.details.match(/(\d+)\s*m²/)
-                  return match ? `${match[1]} m²` : 'N/A'
-                })()}</span>
+                <span className="spec-value">{property.area ? `${property.area} m²` : (() => { const match = property.details.match(/(\d+)\s*m²/); return match ? `${match[1]} m²` : 'N/A'})()}</span>
               </div>
               <div className="spec-item">
                 <span className="spec-label">Pièces</span>
-                <span className="spec-value">
-                  {property.details.includes('S+3')
-                    ? 'S+3'
-                    : property.details.includes('S+2')
-                    ? 'S+2'
-                    : 'N/A'}
-                </span>
+                <span className="spec-value">{property.rooms ?? (property.details.includes('S+') ? property.details.split('·')[1]?.trim() : 'N/A')}</span>
               </div>
               <div className="spec-item">
                 <span className="spec-label">Salles de bain</span>
-                <span className="spec-value">2</span>
+                <span className="spec-value">{property.bathrooms ?? 'N/A'}</span>
               </div>
               <div className="spec-item">
                 <span className="spec-label">Étage</span>
-                <span className="spec-value">3</span>
+                <span className="spec-value">{property.floor ?? 'N/A'}</span>
+              </div>
+              <div className="spec-item">
+                <span className="spec-label">Orientation</span>
+                <span className="spec-value">{property.orientation ?? 'N/A'}</span>
+              </div>
+              <div className="spec-item">
+                <span className="spec-label">Type du sol</span>
+                <span className="spec-value">{property.floorType ?? 'N/A'}</span>
+              </div>
+              <div className="spec-item">
+                <span className="spec-label">Années</span>
+                <span className="spec-value">{property.years ?? 'N/A'}</span>
               </div>
             </div>
           </div>
@@ -123,10 +145,18 @@ export default function PropertyDetail() {
           <div className="sidebar-card">
             <h3 className="sidebar-title">Caractéristiques</h3>
             <div className="characteristics-tags">
-              <span className="char-tag">Parking</span>
-              <span className="char-tag">Ascenseur</span>
-              <span className="char-tag">Climatisation</span>
-              <span className="char-tag">Terrasse</span>
+              {(property.features && property.features.length > 0) ? (
+                property.features.map((f) => (
+                  <span key={f} className="char-tag">{f}</span>
+                ))
+              ) : (
+                <>
+                  <span className="char-tag">Parking</span>
+                  <span className="char-tag">Ascenseur</span>
+                  <span className="char-tag">Climatisation</span>
+                  <span className="char-tag">Terrasse</span>
+                </>
+              )}
             </div>
           </div>
 

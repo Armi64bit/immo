@@ -1,4 +1,4 @@
-export type PageKey = 'accueil' | 'vente' | 'location' | 'carte' | 'estimation' | 'contact'
+export type PageKey = 'accueil' | 'vente' | 'location' | 'carte' | 'estimation' | 'contact' | 'recrutement'
 
 export type NavItem = {
   key: PageKey
@@ -16,4 +16,13 @@ export type PropertyItem = {
   status: string
   lat?: number
   lng?: number
+  area?: number
+  rooms?: number
+  bedrooms?: number
+  bathrooms?: number
+  floor?: string | number
+  orientation?: string
+  years?: string
+  floorType?: string
+  features?: string[]
 }

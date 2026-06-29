@@ -60,7 +60,7 @@ a {
 .topbar {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 1rem 1.2rem;
+  /* padding: 1rem 1.2rem; */
   display: grid;
   grid-template-columns: minmax(140px, auto) 1fr minmax(140px, auto);
   align-items: center;
@@ -79,17 +79,38 @@ a {
 
 .brand-logo {
   width: 100%;
-  max-width: 20rem;
-  max-height: 4rem;
+  max-width: 24rem;
+  max-height: 5rem;
   display: block;
   object-fit: contain;
 }
 
 @media (max-width: 960px) {
+  .brand {
+    justify-content: center;
+  }
+
   .brand-logo {
     width: 100%;
-    max-width: calc(100vw - 5.5rem);
-    max-height: 3rem;
+    max-width: calc(100vw - 4rem);
+    max-height: 5.5rem;
+  }
+
+  /* On small screens collapse header to: logo + burger only */
+  .topbar {
+    grid-template-columns: 1fr auto;
+    padding: 0.5rem 0.75rem;
+    align-items: center;
+  }
+
+  .mobile-toolbox {
+    justify-self: end;
+  }
+
+  /* hide desktop-only controls to free space for logo */
+  .desktop-nav,
+  .desktop-actions {
+    display: none;
   }
 }
 
@@ -768,6 +789,30 @@ a {
   box-shadow: 0 18px 40px rgba(0, 0, 0, 0.08);
 }
 
+/* icons row under property header */
+.icons-row {
+  display: flex;
+  gap: 1.25rem;
+  margin-top: 0.75rem;
+  align-items: center;
+}
+
+.icon-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--text-muted);
+}
+
+.icon-item .icon {
+  font-size: 1.25rem;
+}
+
+.icon-item .label {
+  font-weight: 700;
+  color: var(--text-strong);
+}
+
 .btn-whatsapp {
   background: linear-gradient(135deg, #25d366, #1db954);
   color: #080706;
@@ -827,14 +872,13 @@ a {
 @media (max-width: 960px) {
   .topbar {
     width: 100%;
+    height: 5rem;
     max-width: none;
     margin: 0;
     grid-template-columns: auto auto;
     justify-content: space-between;
     align-items: center;
-    padding: 0.75rem 1rem;
     gap: 0.8rem;
-    height: 3rem;
   }
 
   .desktop-nav,
@@ -962,7 +1006,7 @@ a {
   }
 
   .topbar {
-    padding: 0.9rem 1rem;
+    /* padding: 0.9rem 1rem; */
   }
 
   .hero-section {
@@ -1692,7 +1736,7 @@ a {
 .main-footer {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 2rem 1.5rem 3rem;
+  /* padding: 2rem 1.5rem 3rem; */
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 1.5rem;
@@ -1822,10 +1866,10 @@ a {
   .main-footer {
     border-radius: 22px;
   }
-
+/* 
   .topbar {
     padding: 1rem;
-  }
+  } */
 
   .filter-panel {
     grid-template-columns: repeat(2, 1fr);
