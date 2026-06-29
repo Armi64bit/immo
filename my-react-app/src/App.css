@@ -597,6 +597,113 @@ textarea {
   overflow: hidden;
   background: rgba(255, 255, 255, 0.02);
   border: 1px solid rgba(255, 255, 255, 0.08);
+  position: relative;
+}
+
+.map-pin-marker {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -100%);
+  z-index: 10;
+  pointer-events: none;
+}
+
+.pin-icon {
+  font-size: 2.5rem;
+  line-height: 1;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+  animation: pinBounce 0.6s ease-out;
+}
+
+@keyframes pinBounce {
+  0% {
+    transform: translateY(-30px);
+    opacity: 0;
+  }
+  70% {
+    transform: translateY(8px);
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.pin-label {
+  position: absolute;
+  top: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255, 0, 0, 0.9);
+  color: white;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.map-selected-card {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 1.5rem;
+  background: rgba(8, 7, 6, 0.95);
+  border: 1px solid rgba(201, 168, 76, 0.3);
+  padding: 1rem 1.5rem;
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  max-width: 400px;
+}
+
+.map-selected-card strong {
+  display: block;
+  color: var(--text-strong);
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.selected-location {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.selected-price {
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 1rem;
+  white-space: nowrap;
+}
+
+.map-markers-info {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: rgba(8, 7, 6, 0.95);
+  border: 1px solid rgba(201, 168, 76, 0.3);
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+}
+
+.markers-legend {
+  margin: 0;
+  color: var(--text-strong);
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.marker-pin {
+  font-size: 1.3rem;
+  display: inline-block;
 }
 
 .map-placeholder {

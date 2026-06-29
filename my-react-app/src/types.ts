@@ -14,4 +14,6 @@ export type PropertyItem = {
   reference: string
   imageUrl: string
   status: string
+  lat?: number
+  lng?: number
 }

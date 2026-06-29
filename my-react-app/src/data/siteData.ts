@@ -19,6 +19,8 @@ export const featuredProperties: PropertyItem[] = [
     reference: 'IC-2026-002',
     imageUrl: 'https://images.unsplash.com/photo-1523217582562-09d0def993a6?auto=format&fit=crop&w=1200&q=80',
     status: 'Disponible',
+    lat: 36.8667,
+    lng: 10.3167,
   },
   {
     title: 'Appartement S+3 lumineux',
@@ -29,6 +31,8 @@ export const featuredProperties: PropertyItem[] = [
     reference: 'IC-2026-001',
     imageUrl: 'https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1200&q=80',
     status: 'Disponible',
+    lat: 36.8,
+    lng: 10.2,
   },
   {
     title: 'Résidence premium',
@@ -39,6 +43,8 @@ export const featuredProperties: PropertyItem[] = [
     reference: 'IC-2026-003',
     imageUrl: 'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1200&q=80',
     status: 'Disponible',
+    lat: 36.82,
+    lng: 10.18,
   },
   {
     title: 'Penthouse vue mer',
@@ -49,6 +55,8 @@ export const featuredProperties: PropertyItem[] = [
     reference: 'IC-2026-004',
     imageUrl: 'https://images.unsplash.com/photo-1512917774080-9b274b5ce02f?auto=format&fit=crop&w=1200&q=80',
     status: 'Disponible',
+    lat: 36.8611,
+    lng: 10.3269,
   },
   {
     title: 'Studio moderne centre-ville',
@@ -59,6 +67,8 @@ export const featuredProperties: PropertyItem[] = [
     reference: 'IC-2026-005',
     imageUrl: 'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=1200&q=80',
     status: 'Disponible',
+    lat: 36.8,
+    lng: 10.18,
   },
   {
     title: 'Maison de caractère',
@@ -69,6 +79,8 @@ export const featuredProperties: PropertyItem[] = [
     reference: 'IC-2026-006',
     imageUrl: 'https://images.unsplash.com/photo-1570129477492-45a003537e1f?auto=format&fit=crop&w=1200&q=80',
     status: 'Disponible',
+    lat: 36.82,
+    lng: 10.22,
   },
   {
     title: 'Duplex spacieux',
@@ -79,6 +91,8 @@ export const featuredProperties: PropertyItem[] = [
     reference: 'IC-2026-007',
     imageUrl: 'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=1200&q=80',
     status: 'Disponible',
+    lat: 36.8667,
+    lng: 10.1833,
   },
   {
     title: 'Appartement de luxe',
@@ -89,6 +103,8 @@ export const featuredProperties: PropertyItem[] = [
     reference: 'IC-2026-008',
     imageUrl: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=1200&q=80',
     status: 'Disponible',
+    lat: 36.83,
+    lng: 10.19,
   },
   {
     title: 'Terrain premium',
@@ -99,6 +115,8 @@ export const featuredProperties: PropertyItem[] = [
     reference: 'IC-2026-009',
     imageUrl: 'https://images.unsplash.com/photo-1500382017468-7049fae79ece?auto=format&fit=crop&w=1200&q=80',
     status: 'Disponible',
+    lat: 36.8,
+    lng: 10.15,
   },
   {
     title: 'Riad traditionnel rénové',
@@ -109,6 +127,8 @@ export const featuredProperties: PropertyItem[] = [
     reference: 'IC-2026-010',
     imageUrl: 'https://images.unsplash.com/photo-1603736243693-9e83e4ef35e9?auto=format&fit=crop&w=1200&q=80',
     status: 'Disponible',
+    lat: 36.7956,
+    lng: 10.1847,
   },
   {
     title: 'Villa moderne avec piscine',
@@ -119,6 +139,8 @@ export const featuredProperties: PropertyItem[] = [
     reference: 'IC-2026-011',
     imageUrl: 'https://images.unsplash.com/photo-1552895542-f2b08422038a?auto=format&fit=crop&w=1200&q=80',
     status: 'Disponible',
+    lat: 36.87,
+    lng: 10.32,
   },
   {
     title: 'Appartement neuf avec balcon',
@@ -129,6 +151,8 @@ export const featuredProperties: PropertyItem[] = [
     reference: 'IC-2026-012',
     imageUrl: 'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=1200&q=80',
     status: 'Disponible',
+    lat: 36.8056,
+    lng: 10.2089,
   },
 ]
 
