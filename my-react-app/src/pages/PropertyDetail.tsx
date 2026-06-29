@@ -1,11 +1,11 @@
 import { useParams, useNavigate } from 'react-router-dom'
-import { properties } from '../data/siteData'
+import { featuredProperties, whatsappNumbers } from '../data/siteData'
 import FloatingActions from '../components/FloatingActions'
 
 export default function PropertyDetail() {
   const { id } = useParams<{ id: string }>()
   const navigate = useNavigate()
-  const property = properties.find(p => p.reference === id)
+  const property = featuredProperties.find((p) => p.reference === id)
 
   if (!property) {
     return (
@@ -29,15 +29,17 @@ export default function PropertyDetail() {
     return ''
   }
 
+  const whatsappNumber = whatsappNumbers[0].replace(/\D/g, '')
+
   return (
-    <section className="page-panel property-detail">
+    <article className="page-panel property-detail">
       <div className="detail-breadcrumb">
         <button onClick={() => navigate('/Vente')} className="breadcrumb-btn">
           ← Toutes les annonces
         </button>
       </div>
 
-      <div className="detail-header">
+      <header className="detail-header">
         <div className="detail-meta">
           <span className="meta-badge">{property.status}</span>
           <span className="meta-badge">·</span>
@@ -45,62 +47,81 @@ export default function PropertyDetail() {
           <span className="meta-badge">·</span>
           <span className="meta-badge">{property.location}</span>
         </div>
-        <h1 className="detail-title">{property.title}</h1>
+
+        <div>
+          <h1 className="detail-title">{property.title}</h1>
+          <p className="detail-subtitle">Finitions soignées, résidence calme et sécurisée.</p>
+        </div>
+
         <div className="detail-ref-price">
           <span className="detail-ref">RÉFÉRENCE {property.reference}</span>
           <span className="detail-price">{property.price}</span>
           <span className="detail-available">DISPONIBLE</span>
         </div>
-      </div>
+      </header>
 
       <div className="detail-layout">
         <div className="detail-main">
           <img src={property.imageUrl} alt={property.title} className="detail-image" />
 
-          <div className="detail-section">
+          <section className="detail-section">
             <h2>À propos de ce bien</h2>
             <p>{property.details}</p>
-          </div>
+          </section>
 
-          <div className="detail-section">
+          <section className="detail-section">
             <h2>Emplacement</h2>
             <div className="map-embed">
-              <iframe
-                width="100%"
-                height="400"
-                style={{ border: 0 }}
-                loading="lazy"
-                allowFullScreen={true}
-                src={getMapEmbedUrl()}
-              ></iframe>
+              {getMapEmbedUrl() ? (
+                <iframe
+                  width="100%"
+                  height="400"
+                  style={{ border: 0 }}
+                  loading="lazy"
+                  allowFullScreen={true}
+                  src={getMapEmbedUrl()}
+                  title={`Carte de ${property.location}`}
+                />
+              ) : (
+                <div className="map-fallback">Carte non disponible</div>
+              )}
             </div>
-          </div>
+          </section>
         </div>
 
         <aside className="detail-sidebar">
           <div className="sidebar-card">
             <div className="detail-specs">
               <div className="spec-item">
-                <span className="spec-label">SURFACE</span>
-                <span className="spec-value">{property.details.match(/(\d+)\s*m²/) ? property.details.match(/(\d+)\s*m²/)[1] + ' m²' : 'N/A'}</span>
+                <span className="spec-label">Surface</span>
+                <span className="spec-value">{(() => {
+                  const match = property.details.match(/(\d+)\s*m²/)
+                  return match ? `${match[1]} m²` : 'N/A'
+                })()}</span>
               </div>
               <div className="spec-item">
-                <span className="spec-label">PIÈCES</span>
-                <span className="spec-value">{property.details.includes('S+3') ? 'S+3' : property.details.includes('S+2') ? 'S+2' : 'N/A'}</span>
+                <span className="spec-label">Pièces</span>
+                <span className="spec-value">
+                  {property.details.includes('S+3')
+                    ? 'S+3'
+                    : property.details.includes('S+2')
+                    ? 'S+2'
+                    : 'N/A'}
+                </span>
               </div>
               <div className="spec-item">
-                <span className="spec-label">SALLES DE BAIN</span>
+                <span className="spec-label">Salles de bain</span>
                 <span className="spec-value">2</span>
               </div>
               <div className="spec-item">
-                <span className="spec-label">ÉTAGE</span>
+                <span className="spec-label">Étage</span>
                 <span className="spec-value">3</span>
               </div>
             </div>
           </div>
 
           <div className="sidebar-card">
-            <h3 className="sidebar-title">CARACTÉRISTIQUES</h3>
+            <h3 className="sidebar-title">Caractéristiques</h3>
             <div className="characteristics-tags">
               <span className="char-tag">Parking</span>
               <span className="char-tag">Ascenseur</span>
@@ -109,17 +130,22 @@ export default function PropertyDetail() {
             </div>
           </div>
 
-          <a href={`https://wa.me/21650123456?text=Intéressé(e) par: ${property.title}`} target="_blank" rel="noopener noreferrer" className="btn btn-whatsapp">
-            WHATSAPP
+          <a
+            href={`https://wa.me/${whatsappNumber}?text=Bonjour%2C%20je%20suis%20int%C3%A9ress%C3%A9(e)%20par%20le%20bien%20${encodeURIComponent(
+              property.title
+            )}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn btn-whatsapp"
+          >
+            WhatsApp
           </a>
 
-          <button className="btn btn-dark">
-            DEMANDER DES INFORMATIONS
-          </button>
+          <button className="btn btn-dark">Demander des informations</button>
         </aside>
       </div>
 
-      <FloatingActions />
-    </section>
+      <FloatingActions numbers={whatsappNumbers} />
+    </article>
   )
 }

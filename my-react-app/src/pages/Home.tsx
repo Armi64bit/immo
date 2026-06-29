@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import type { PropertyItem } from '../types'
 
 type Props = {
@@ -53,20 +54,22 @@ export default function Home({ featuredProperties, zones, onNavigate }: Props) {
         </div>
         <div className="card-grid">
           {featuredProperties.map((property) => (
-            <article className="property-card property-card-listing" key={property.title}>
-              <div className="property-card-image">
-                <img src={property.imageUrl} alt={property.title} />
-                <span className="property-status">{property.status}</span>
-                <span className="property-star">★</span>
-                <span className="property-ref">{property.reference}</span>
-              </div>
-              <div className="property-card-body">
-                <p className="property-label">{property.type} · {property.location}</p>
-                <h3>{property.title}</h3>
-                <p className="property-meta">{property.details}</p>
-              </div>
-              <div className="property-price">{property.price}</div>
-            </article>
+            <Link key={property.title} to={`/property/${property.reference}`} className="property-card-link">
+              <article className="property-card property-card-listing">
+                <div className="property-card-image">
+                  <img src={property.imageUrl} alt={property.title} />
+                  <span className="property-status">{property.status}</span>
+                  <span className="property-star">★</span>
+                  <span className="property-ref">{property.reference}</span>
+                </div>
+                <div className="property-card-body">
+                  <p className="property-label">{property.type} · {property.location}</p>
+                  <h3>{property.title}</h3>
+                  <p className="property-meta">{property.details}</p>
+                </div>
+                <div className="property-price">{property.price}</div>
+              </article>
+            </Link>
           ))}
         </div>
       </section>
