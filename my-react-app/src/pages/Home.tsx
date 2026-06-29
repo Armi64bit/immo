@@ -22,17 +22,17 @@ export default function Home({ featuredProperties, zones, onNavigate }: Props) {
                 <button type="button" className="btn btn-secondary" onClick={() => onNavigate('location')}>Location</button>
               </div>
             </div>
-            <div style={{ marginLeft: '25rem' }} className="hero-summary">
-              <div className="hero-card" style={{ width: '120%' }}>
+            <div className="hero-summary">
+              <div className="hero-card">
                 <strong>Élégance & performance</strong>
                 <p>Un accompagnement haut de gamme, des présentations soignées, des transactions optimisées.</p>
               </div>
               <div className="hero-stats">
-                <div style={{ width: '130%',marginRight: '1rem' }}>
+                <div>
                   <span>120+</span>
                   <p>Biens premium</p>
                 </div>
-                <div style={{ width: '120%',marginLeft: '1rem' }}>
+                <div>
                   <span>24h</span>
                   <p>Réponse garantie</p>
                 </div>

@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import type { NavItem } from '../types'
 
@@ -8,9 +9,10 @@ type Props = {
   onEstimateClick: () => void
 }
 
-export default function Header({ navItems }: Props) {
+export default function Header({ navItems, onEstimateClick }: Props) {
   const location = useLocation()
   const navigate = useNavigate()
+  const [menuOpen, setMenuOpen] = useState(false)
 
   const getActivePage = () => {
     const path = location.pathname.toLowerCase()
@@ -25,16 +27,30 @@ export default function Header({ navItems }: Props) {
 
   const activePage = getActivePage()
 
+  useEffect(() => {
+    setMenuOpen(false)
+  }, [location.pathname])
+
   const getRouteForKey = (key: string) => {
     const routeMap: Record<string, string> = {
-      'accueil': '/',
-      'vente': '/Vente',
-      'location': '/Location',
-      'carte': '/Carte',
-      'estimation': '/Estimation',
-      'contact': '/Contact'
+      accueil: '/',
+      vente: '/Vente',
+      location: '/Location',
+      carte: '/Carte',
+      estimation: '/Estimation',
+      contact: '/Contact'
     }
     return routeMap[key] || '/'
+  }
+
+  const handleNavigate = (route: string) => {
+    navigate(route)
+    setMenuOpen(false)
+  }
+
+  const handleEstimateClick = () => {
+    onEstimateClick()
+    handleNavigate('/Estimation')
   }
 
   return (
@@ -44,7 +60,20 @@ export default function Header({ navItems }: Props) {
           <span>Immo</span>Connect
         </Link>
 
-        <nav className="nav-links" aria-label="Navigation principale">
+        <button
+          type="button"
+          className="menu-toggle"
+          aria-label="Ouvrir le menu"
+          aria-expanded={menuOpen}
+          aria-controls="mobile-nav-panel"
+          onClick={() => setMenuOpen((prev) => !prev)}
+        >
+          <span />
+          <span />
+          <span />
+        </button>
+
+        <nav className="nav-links desktop-nav" aria-label="Navigation principale">
           {navItems.map((item) => (
             <Link
               key={item.key}
@@ -56,8 +85,30 @@ export default function Header({ navItems }: Props) {
           ))}
         </nav>
 
-        <div className="header-actions">
-          <button type="button" className="header-cta" onClick={() => navigate('/Estimation')}>
+        <div className="header-actions desktop-actions">
+          <button type="button" className="header-cta" onClick={handleEstimateClick}>
+            Estimer mon bien
+          </button>
+          <button type="button" className="locale-button">EN</button>
+        </div>
+      </div>
+
+      <div id="mobile-nav-panel" className={`mobile-nav-panel ${menuOpen ? 'open' : ''}`}>
+        <nav className="mobile-nav-links" aria-label="Navigation mobile">
+          {navItems.map((item) => (
+            <Link
+              key={item.key}
+              to={getRouteForKey(item.key)}
+              className={activePage === item.key ? 'nav-link active' : 'nav-link'}
+              onClick={() => handleNavigate(getRouteForKey(item.key))}
+            >
+              {item.label}
+            </Link>
+          ))}
+        </nav>
+
+        <div className="mobile-header-actions">
+          <button type="button" className="header-cta" onClick={handleEstimateClick}>
             Estimer mon bien
           </button>
           <button type="button" className="locale-button">EN</button>
