@@ -79,7 +79,7 @@ export default function Home({ featuredProperties, zones, onNavigate }: Props) {
             <p>Expertise locale sur les quartiers les plus recherchés.</p>
           </div>
         </div>
-        <div className="tag-list">
+        <div  className="tag-list">
           {zones.map((zone) => (
             <button key={zone} type="button" className="zone-chip">
               {zone}
