@@ -1,0 +1,31 @@
+name: Deploy to OVH
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Trigger OVH deployment
+        run: |
+          curl -X POST "https://webhooks-webhosting.eu.ovhapis.com/1.0/vcs/github/push/eyJhbGciOiJFZERTQSIsImtpZCI6IjEiLCJ0eXAiOiJKV1QifQ.eyJzdWIiOiJnaXRodWIveHYyNTYyLW92aCIsImV4cCI6MjUyNDYwNzk5OSwianRpIjoiZGY0MWQ5ZTRmZmRiODM5Y2U3M2QzMzY5M2ExNjBmNTc3NzZkYWVlZSIsInZlcnNpb24iOjEsIm5hbWUiOiJpbW1vY294LmNsdXN0ZXIxMDAuaG9zdGluZy5vdmgubmV0IiwicGF0aCI6Ind3dyIsImNvdW50ZXIiOjB9.z-nf5Hk-1P3Xw8YJZXS-qjW2IB938gXDR2llmiehkB8HlgpkKXakFHP07VQdJCoIGRznH7oRF2hCXT5icE8hAg"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
