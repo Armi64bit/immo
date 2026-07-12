@@ -1,4 +1,4 @@
-name: Deploy to OVH
+name: Deploy to OVH via FTP
 
 on:
   push:
@@ -24,26 +24,12 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Trigger OVH deployment
-        run: |
-          PAYLOAD=$(cat <<'EOF'
-          {
-            "ref": "refs/heads/main",
-            "before": "${{ github.event.before || '0000000000000000000000000000000000000000' }}",
-            "after": "${{ github.sha }}",
-            "repository": {
-              "full_name": "${{ github.repository }}",
-              "name": "${{ github.event.repository.name }}",
-              "owner": { "name": "${{ github.repository_owner }}" }
-            },
-            "pusher": { "name": "${{ github.actor }}" },
-            "head_commit": { "id": "${{ github.sha }}", "message": "${{ github.event.head_commit.message || 'Deploy trigger' }}" }
-          }
-          EOF
-          )
-          curl -X POST "https://webhooks-webhosting.eu.ovhapis.com/1.0/vcs/github/push/eyJhbGciOiJFZERTQSIsImtpZCI6IjEiLCJ0eXAiOiJKV1QifQ.eyJzdWIiOiJnaXRodWIveHYyNTYyLW92aCIsImV4cCI6MjUyNDYwNzk5OSwianRpIjoiZGY0MWQ5ZTRmZmRiODM5Y2U3M2QzMzY5M2ExNjBmNTc3NzZkYWVlZSIsInZlcnNpb24iOjEsIm5hbWUiOiJpbW1vY294LmNsdXN0ZXIxMDAuaG9zdGluZy5vdmgubmV0IiwicGF0aCI6Ind3dyIsImNvdW50ZXIiOjB9.z-nf5Hk-1P3Xw8YJZXS-qjW2IB938gXDR2llmiehkB8HlgpkKXakFHP07VQdJCoIGRznH7oRF2hCXT5icE8hAg" \
-            -H "Content-Type: application/json" \
-            -H "X-GitHub-Event: push" \
-            -d "$PAYLOAD"
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Deploy via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ftp.cluster100.hosting.ovh.net
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./dist/
+          server-dir: ./www/
+          protocol: ftps
